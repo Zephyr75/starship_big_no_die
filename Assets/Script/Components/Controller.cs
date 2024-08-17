@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller : Components_SS
+public class Controller : ComponentSS
 {
     // Start is called before the first frame update
     void Start()

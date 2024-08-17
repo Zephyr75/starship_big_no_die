@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StarShips : MonoBehaviour
 {
-    [SerializeField] private List<Components_SS> components;
+    [SerializeField] private List<ComponentSS> components;
     
     // Start is called before the first frame update
     void Start()
