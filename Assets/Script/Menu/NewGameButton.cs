@@ -1,26 +1,29 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NewGameButton : MonoBehaviour
+namespace Script.Menu
 {
-    public Button newGameButton;
+    public class NewGameButton : MonoBehaviour
+    {
+        public Button newGameButton;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        newGameButton.onClick.AddListener(onClicked);
+        // Start is called before the first frame update
+        void Start()
+        {
+            newGameButton.onClick.AddListener(OnClicked);
         
         
-    }
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
         
-    }
+        }
 
-    void onClicked()
-    {
-        Debug.Log("clicked " + newGameButton.gameObject.name);
+        void OnClicked()
+        {
+            Debug.Log("clicked " + newGameButton.gameObject.name);
+        }
     }
 }

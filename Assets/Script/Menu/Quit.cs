@@ -1,24 +1,27 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Quit : MonoBehaviour
+namespace Script.Menu
 {
-    public Button quitGameButton;
-    // Start is called before the first frame update
-    void Start()
+    public class Quit : MonoBehaviour
     {
-        quitGameButton.onClick.AddListener(onClicked);
-    }
+        public Button quitGameButton;
+        // Start is called before the first frame update
+        void Start()
+        {
+            quitGameButton.onClick.AddListener(OnClicked);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
         
-    }
+        }
 
-    void onClicked()
-    {
-        Debug.Log("clicked " + quitGameButton.gameObject.name);
-        Application.Quit();
+        void OnClicked()
+        {
+            Debug.Log("clicked " + quitGameButton.gameObject.name);
+            Application.Quit();
+        }
     }
 }
