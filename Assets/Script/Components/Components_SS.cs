@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Components_SS : MonoBehaviour
 {
+    [SerializeField] private bool isController;
     // Start is called before the first frame update
     void Start()
     {
