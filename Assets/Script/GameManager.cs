@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     private GameObject preview;
     private Transform oldHit;
     private Vector3 oldNormal;
+
+    private ComponentsEnum selectedEnum = ComponentsEnum.Bloc;
     
     void Start()
     {
@@ -31,6 +33,7 @@ public class GameManager : MonoBehaviour
         ship.transform.position = new Vector3(-1, 6, -18);
         GameObject motor = Instantiate(prefabsComponents[ComponentsEnum.Motor]);
         motor.transform.position = ship.transform.position - ship.transform.forward * ship.transform.localScale.z * 2;
+        motor.transform.eulerAngles += new Vector3(0, 180, 0);
         ComponentSS compMotor = motor.GetComponent<ComponentSS>();
         compMotor.SetDir(DirEnum.Front);
         if (compMotor != null)
@@ -49,6 +52,18 @@ public class GameManager : MonoBehaviour
         DebugTools.DebugFixedJoint(ship);
     }
 
+    void CheckKeyDownSwitch()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) selectedEnum = ComponentsEnum.Bloc;
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) selectedEnum = ComponentsEnum.Motor;
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) selectedEnum = ComponentsEnum.Canon;
+        else if (Input.GetKeyDown(KeyCode.Alpha4)) selectedEnum = ComponentsEnum.Laser;
+        else if (Input.GetKeyDown(KeyCode.Alpha5)) selectedEnum = ComponentsEnum.Shield;
+        else if (Input.GetKeyDown(KeyCode.Alpha6)) selectedEnum = ComponentsEnum.Solar;
+        else if (Input.GetKeyDown(KeyCode.Alpha7)) selectedEnum = ComponentsEnum.Battery;
+        else if (Input.GetKeyDown(KeyCode.Alpha8)) selectedEnum = ComponentsEnum.FieldGen;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -60,12 +75,14 @@ public class GameManager : MonoBehaviour
             }
             return;
         }
+        ComponentsEnum oldSelectedEnum = selectedEnum;
+        CheckKeyDownSwitch();
         
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100))
+        if (Physics.Raycast(ray, out hit, 100, 1 << 30 | 1 << 29))
         {
-            if (hit.transform != oldHit || oldNormal != hit.normal)
+            if ((hit.transform != oldHit || oldNormal != hit.normal || oldSelectedEnum != selectedEnum) && hit.collider.gameObject.layer == 30)
             {
                 Destroy(preview);
                 Transform hitTransform = hit.transform;
@@ -74,9 +91,9 @@ public class GameManager : MonoBehaviour
                 {
                     ortho = hitTransform.transform.up;
                 }
-                preview = Instantiate(prefabsComponents[ComponentsEnum.Canon], hit.transform.position + hit.normal,
+                preview = Instantiate(prefabsComponents[selectedEnum], hit.transform.position + hit.normal,
                     Quaternion.LookRotation(hit.normal, ortho));
-                Renderer previewRenderer = preview.GetComponent<Renderer>();
+                Renderer previewRenderer = preview.transform.GetChild(0).GetComponent<Renderer>();
                 Material[] materials = previewRenderer.materials;
                 for (int i = 0; i < materials.Length; i++)
                 {
@@ -86,12 +103,28 @@ public class GameManager : MonoBehaviour
                 Destroy(preview.GetComponent<Collider>());
                 oldHit = hit.transform;
                 oldNormal = hit.normal;
+            } else if (hit.collider.gameObject.layer != 30)
+            {
+                Destroy(preview);
+                oldHit = hit.transform;
+                oldNormal = hit.normal;
             }
+        }
+        else
+        {
+            Destroy(preview);
+            oldHit = null;
+            oldNormal = Vector3.forward;
+        }
+        
+        if (Input.GetMouseButtonDown(0))
+        {
+            print(preview);
         }
 
         if (Input.GetMouseButtonDown(0) && preview)
         {
-            GameObject newComponent = Instantiate(prefabsComponents[ComponentsEnum.Canon], preview.transform.position,
+            GameObject newComponent = Instantiate(prefabsComponents[selectedEnum], preview.transform.position,
                 preview.transform.rotation);
             ComponentSS comp = newComponent.GetComponent<ComponentSS>();
             print(getDirection(preview.transform.forward));
