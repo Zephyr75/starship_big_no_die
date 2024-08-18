@@ -21,6 +21,8 @@ public class StarShips : MonoBehaviour
     {
         
     }
+    
+    public Controller GetController() { return controller; } 
 
     public void AddComponents(ComponentSS comp)
     {
