@@ -4,12 +4,6 @@ namespace Script
     {
         Controller,
         Motor,
-        Canon,
-        Battery,
-        Shield,
-        FieldGen,
-        Laser,
-        Bloc,
-        Solar
+        Canon
     }
 }

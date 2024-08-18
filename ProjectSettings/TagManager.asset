@@ -3,13 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Component
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ships
+  - 
   - Water
   - UI
   - 
@@ -35,8 +34,8 @@ TagManager:
   - 
   - 
   - 
-  - ComponentIgnore
-  - Component
+  - 
+  - 
   - 
   m_SortingLayers:
   - name: Default

@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 namespace Script.Menu
 {
@@ -16,9 +15,14 @@ namespace Script.Menu
         
         }
 
+        // Update is called once per frame
+        void Update()
+        {
+        
+        }
+
         void OnClicked()
         {
-            SceneManager.LoadScene("Main");
             Debug.Log("clicked " + newGameButton.gameObject.name);
         }
     }
