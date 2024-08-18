@@ -368,7 +368,7 @@ Transform:
   m_GameObject: {fileID: 1251443505}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.12, y: -1.23, z: -18.32}
+  m_LocalPosition: {x: -1, y: -1.23, z: -18.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -403,11 +403,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f165a09b05d4c05a84914a9f0ae77d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabStarShip: {fileID: 3763477451321038158, guid: 31a1bd9625e0bb244ac78169b2a7c9ba,
+  prefabStarShip: {fileID: 3651903380032387762, guid: 68416de54dd0c6845901f68695a08718,
     type: 3}
   myMap:
-    keys: 
-    values: []
+    listItem:
+    - key: 0
+      value: {fileID: 131493172099069664, guid: 142d7342fc8706f479ab1891693c23fb,
+        type: 3}
+    - key: 1
+      value: {fileID: 6099103917003562427, guid: e8b6d44b7f81db6429a57523677d8304,
+        type: 3}
+    - key: 2
+      value: {fileID: 2415261431815054876, guid: 4db0865bf3b85f743ade1d26f416247e,
+        type: 3}
 --- !u!4 &1301829604
 Transform:
   m_ObjectHideFlags: 0
@@ -768,6 +776,8 @@ GameObject:
   - component: {fileID: 8222380040655498162}
   - component: {fileID: 3457913696461957387}
   - component: {fileID: 5334471320984629238}
+  - component: {fileID: 8222380040655498164}
+  - component: {fileID: 8222380040655498163}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -908,6 +918,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!138 &8222380040655498163
+FixedJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3955525476560868444}
+  m_ConnectedBody: {fileID: 4512092499290637056}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!138 &8222380040655498164
+FixedJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3955525476560868444}
+  m_ConnectedBody: {fileID: 3666618641547256609}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
 --- !u!1 &8461800925756005124
 GameObject:
   m_ObjectHideFlags: 0
