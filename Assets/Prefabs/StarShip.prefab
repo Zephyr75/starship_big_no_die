@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6467631806397466513}
   - component: {fileID: 466792645836292180}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: StarShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   components:
   - {fileID: 6988670757784515577}
+  controller: {fileID: 6988670757784515577}
 --- !u!1001 &2147257426453888691
 PrefabInstance:
   m_ObjectHideFlags: 0
