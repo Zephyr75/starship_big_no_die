@@ -190,7 +190,11 @@ PrefabInstance:
     - {fileID: 7346916684879466904, guid: 0af95f9567eeb164cb55eb98b2f8a7e1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4815698563202629518, guid: 0af95f9567eeb164cb55eb98b2f8a7e1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1010968624}
   m_SourcePrefab: {fileID: 100100000, guid: 0af95f9567eeb164cb55eb98b2f8a7e1, type: 3}
 --- !u!1001 &888946602
 PrefabInstance:
@@ -253,7 +257,7 @@ PrefabInstance:
     - target: {fileID: 1785439119524869161, guid: 1772e67f31bd71a44b3ab95f76c1e2f2,
         type: 3}
       propertyPath: bulletSpeed
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1785439119524869161, guid: 1772e67f31bd71a44b3ab95f76c1e2f2,
         type: 3}
@@ -282,12 +286,31 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 888946602}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1377911762 stripped
+--- !u!1 &1010968619 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 9189717608454575657, guid: 0af95f9567eeb164cb55eb98b2f8a7e1,
+  m_CorrespondingSourceObject: {fileID: 4815698563202629518, guid: 0af95f9567eeb164cb55eb98b2f8a7e1,
     type: 3}
   m_PrefabInstance: {fileID: 521919341}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1010968624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010968619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b49325c37c22fa44a19195624df9156, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canonOrientation: 0
+  isEnemy: 0
+  bulletSpawnPoint: {fileID: 1646548187}
+  metalBullet: {fileID: 3478787546688892564, guid: 0f1489f0b155d2c4caf81a96c9486c94,
+    type: 3}
+  bulletSpeed: 30
+  inverseShootSpeed: 25
 --- !u!1 &1516423111
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,7 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyToSpawn:
-  - {fileID: 1377911762}
+  - {fileID: 9189717608454575657, guid: 0af95f9567eeb164cb55eb98b2f8a7e1, type: 3}
   enemyAlive: 0
   maxEnemy: 6
   facterScaleDueToShipScale: 1
@@ -455,6 +478,12 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!4 &1646548187 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2496968649908835660, guid: 0af95f9567eeb164cb55eb98b2f8a7e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 521919341}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1832721777
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,6 +633,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: metalBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343840242468996824, guid: 0f1489f0b155d2c4caf81a96c9486c94,
+        type: 3}
+      propertyPath: m_Direction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9046168108127730894, guid: 0f1489f0b155d2c4caf81a96c9486c94,
         type: 3}
