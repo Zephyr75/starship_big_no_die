@@ -12,6 +12,8 @@ public class ComponentSS : MonoBehaviour
     private Dictionary<DirEnum, GameObject> objs = new Dictionary<DirEnum, GameObject>();
     
     private DirEnum dir = DirEnum.Front;
+    
+    protected static float energy = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,7 @@ public class ComponentSS : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void SetDir(DirEnum newDir)

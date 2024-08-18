@@ -11,7 +11,7 @@ public class MainCamera : MonoBehaviour
     private float xSpeed = 500.0f;
     private float ySpeed = 500.0f;
 
-    private float sensitivity = 0.3f;
+    private float sensitivity = 1f;
     
     private float yMinLimit = -80f;
     private float yMaxLimit = 80f;

@@ -13,6 +13,6 @@ public class Solar : ComponentSS
     // Update is called once per frame
     void Update()
     {
-        
+        energy += Time.deltaTime;
     }
 }

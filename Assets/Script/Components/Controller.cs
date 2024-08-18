@@ -13,6 +13,7 @@ public class Controller : ComponentSS
     // Update is called once per frame
     void Update()
     {
-        
+        energy += Time.deltaTime;
+        print(energy);
     }
 }
