@@ -414,8 +414,9 @@ MonoBehaviour:
       value: {fileID: 6099103917003562427, guid: e8b6d44b7f81db6429a57523677d8304,
         type: 3}
     - key: 2
-      value: {fileID: 2415261431815054876, guid: 4db0865bf3b85f743ade1d26f416247e,
+      value: {fileID: 5353980152832696167, guid: 78e5048198b663649bd329f3dde3f42a,
         type: 3}
+  previewMaterial: {fileID: 2100000, guid: 93a8d0d32bd232944b07451f7871ac87, type: 2}
 --- !u!4 &1301829604
 Transform:
   m_ObjectHideFlags: 0
