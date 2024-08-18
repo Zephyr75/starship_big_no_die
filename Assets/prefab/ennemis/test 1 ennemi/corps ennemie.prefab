@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2001753192871201586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2496968649908835660}
+  m_Layer: 0
+  m_Name: bulletSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2496968649908835660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001753192871201586}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.6499939, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6005614968981245020}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &4815698563202629518
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,6 +43,7 @@ GameObject:
   - component: {fileID: 2825883528480302143}
   - component: {fileID: 4733137513022052536}
   - component: {fileID: 3719204694678838630}
+  - component: {fileID: 657524598131781237}
   m_Layer: 0
   m_Name: gunnn
   m_TagString: Untagged
@@ -31,7 +63,8 @@ Transform:
   m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2496968649908835660}
   m_Father: {fileID: 6543450501159454207}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2825883528480302143
@@ -105,6 +138,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &657524598131781237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4815698563202629518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b49325c37c22fa44a19195624df9156, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canonOrientation: 0
+  isEnemy: 1
+  bulletSpawnPoint: {fileID: 2496968649908835660}
+  metalBullet: {fileID: 3478787546688892564, guid: 0f1489f0b155d2c4caf81a96c9486c94,
+    type: 3}
+  bulletSpeed: 30
+  inverseShootSpeed: 50
 --- !u!1 &9189717608454575657
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +169,6 @@ GameObject:
   - component: {fileID: 6501313297632653199}
   - component: {fileID: 903887224846968119}
   - component: {fileID: 5350994603408196973}
-  - component: {fileID: 7346916684879466904}
   m_Layer: 0
   m_Name: corps ennemie
   m_TagString: Untagged
@@ -212,15 +263,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7346916684879466904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9189717608454575657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42423e0ea609b064a8dc32aa7e3cabfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
