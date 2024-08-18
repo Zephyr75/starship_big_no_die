@@ -10,8 +10,8 @@ public class ComponentSS : MonoBehaviour
     private Dictionary<DirEnum, FixedJoint> joints = new Dictionary<DirEnum, FixedJoint>();
 
     private Dictionary<DirEnum, GameObject> objs = new Dictionary<DirEnum, GameObject>();
-
-    private DirEnum dir;
+    
+    private DirEnum dir = DirEnum.Front;
 
     // Start is called before the first frame update
     void Start()
