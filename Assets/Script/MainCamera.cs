@@ -11,6 +11,8 @@ public class MainCamera : MonoBehaviour
     private float xSpeed = 500.0f;
     private float ySpeed = 500.0f;
 
+    private float sensitivity = 0.3f;
+    
     private float yMinLimit = -80f;
     private float yMaxLimit = 80f;
 
@@ -35,6 +37,10 @@ public class MainCamera : MonoBehaviour
 
     void Update()
     {
+        distance -= Input.GetAxis("Mouse ScrollWheel") * sensitivity;
+        distance = Mathf.Clamp(distance, 5, 200);
+        
+        
         if (Input.GetKeyDown(KeyCode.I))
         {
             isEditing = !isEditing;
@@ -56,13 +62,15 @@ public class MainCamera : MonoBehaviour
         float newTime = Time.realtimeSinceStartup;
         deltaTime = newTime - lastTime;
         lastTime = newTime;
-        
+
         if (Input.GetMouseButton(1) && Time.timeScale == 0.0f)
         {
             x += Input.GetAxis("Mouse X") * xSpeed * deltaTime;
             y -= Input.GetAxis("Mouse Y") * ySpeed * deltaTime;
             y = ClampAngle(y, yMinLimit, yMaxLimit);
-
+        }
+        if ((Input.GetAxis( "Mouse ScrollWheel" ) != 0 || Input.GetMouseButton(1)) && Time.timeScale == 0.0f)
+        {
             Quaternion rotation = Quaternion.Euler(y, x, 0);
 
             Vector3 position = rotation * new Vector3(0.0f, 0.0f, -distance) + target.position;

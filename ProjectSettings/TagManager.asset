@@ -35,8 +35,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - ComponentIgnore
+  - Component
   - 
   m_SortingLayers:
   - name: Default

@@ -414,7 +414,25 @@ MonoBehaviour:
       value: {fileID: 6099103917003562427, guid: e8b6d44b7f81db6429a57523677d8304,
         type: 3}
     - key: 2
-      value: {fileID: 5353980152832696167, guid: 78e5048198b663649bd329f3dde3f42a,
+      value: {fileID: 2415261431815054876, guid: 4db0865bf3b85f743ade1d26f416247e,
+        type: 3}
+    - key: 4
+      value: {fileID: 2415261431815054876, guid: 2a36ed733f3364e4bae68d421a3ee112,
+        type: 3}
+    - key: 3
+      value: {fileID: 2415261431815054876, guid: 2f5e03ae56f04a14c80607439fbbbfb2,
+        type: 3}
+    - key: 7
+      value: {fileID: 2415261431815054876, guid: 8fe489ba3da0fa44087b8d066531c529,
+        type: 3}
+    - key: 8
+      value: {fileID: 2415261431815054876, guid: 177f99a373c431c4284a0652b302b51e,
+        type: 3}
+    - key: 5
+      value: {fileID: 2415261431815054876, guid: 638f995e387a88d4cb46538fcdd72e67,
+        type: 3}
+    - key: 6
+      value: {fileID: 2415261431815054876, guid: f64fb443ea797dc4fa0e030452c31658,
         type: 3}
   previewMaterial: {fileID: 2100000, guid: 93a8d0d32bd232944b07451f7871ac87, type: 2}
 --- !u!4 &1301829604
