@@ -7,7 +7,7 @@ public class MainCamera : MonoBehaviour
     [SerializeField]
     private Transform target;
     
-    private float distance = 5.0f;
+    private float distance = 3.0f;
     private float xSpeed = 500.0f;
     private float ySpeed = 500.0f;
 
@@ -23,7 +23,7 @@ public class MainCamera : MonoBehaviour
     private float deltaTime = 0.0f;
     private float lastTime = 0.0f;
     
-    private Vector3 ratio = new Vector3(0, 1f, -2.5f);
+    private Vector3 ratio = new Vector3(0, 0.75f, -2.5f);
     private bool isEditing;
 
 
@@ -39,7 +39,7 @@ public class MainCamera : MonoBehaviour
     void Update()
     {
         distance -= Input.GetAxis("Mouse ScrollWheel") * sensitivity;
-        distance = Mathf.Clamp(distance, 5, 200);
+        distance = Mathf.Clamp(distance, 3, 200);
         
         
         if (Input.GetKeyDown(KeyCode.I))
@@ -84,7 +84,7 @@ public class MainCamera : MonoBehaviour
         if (Time.timeScale > 0.0f)
         {
             transform.localPosition = ratio * distance;
-            transform.localEulerAngles = new Vector3(26.6f, 0, 0);
+            transform.localEulerAngles = new Vector3(10f, 0, 0);
             transform.parent.GetComponent<Rigidbody>().AddTorque(steerSensitivity * Input.GetAxis("Mouse X") * transform.parent.up, ForceMode.Acceleration);
             transform.parent.GetComponent<Rigidbody>().AddTorque(-steerSensitivity * Input.GetAxis("Mouse Y") * transform.parent.right, ForceMode.Acceleration);
         }

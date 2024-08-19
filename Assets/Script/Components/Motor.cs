@@ -19,15 +19,15 @@ public class Motor : ComponentSS
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetKey(KeyCode.W) && dir == DirEnum.Behind) ||
-            (Input.GetKey(KeyCode.S) && dir == DirEnum.Front) ||
-            (Input.GetKey(KeyCode.A) && dir == DirEnum.Right) ||
-            (Input.GetKey(KeyCode.D) && dir == DirEnum.Left) ||
-            (Input.GetKey(KeyCode.LeftShift) && dir == DirEnum.Down) ||
-            (Input.GetKey(KeyCode.LeftControl) && dir == DirEnum.Up))
+        if (((Input.GetKey(KeyCode.W) && dir == DirEnum.Behind) ||
+             (Input.GetKey(KeyCode.S) && dir == DirEnum.Front) ||
+             (Input.GetKey(KeyCode.A) && dir == DirEnum.Right) ||
+             (Input.GetKey(KeyCode.D) && dir == DirEnum.Left) ||
+             (Input.GetKey(KeyCode.LeftShift) && dir == DirEnum.Down) ||
+             (Input.GetKey(KeyCode.LeftControl) && dir == DirEnum.Up)) && energy > 0)
         {
             transform.GetComponent<Rigidbody>().AddForce(-transform.forward * speed, ForceMode.Force);
-            // energy -= consumption * Time.deltaTime;
+            energy -= consumption * Time.deltaTime;
         }
     }
 }

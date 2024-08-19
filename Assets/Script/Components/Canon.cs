@@ -14,7 +14,7 @@ public class Canon : ComponentSS
     [SerializeField]
     private GameObject metalBullet;
 
-    private float bulletSpeed = 30;
+    private float bulletSpeed = 100;
 
     private int cooldownTime = 25;
 
@@ -29,19 +29,19 @@ public class Canon : ComponentSS
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (cooldown == 0 && energy > consumption)
+        if (cooldown <= 0 && energy > consumption)
         {
             if (Input.GetKey(KeyCode.Space) && isEnemy == false)
             {
                 var bullet = Instantiate(metalBullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation * Quaternion.Euler(90, 0, 0));
                 bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;
                 cooldown = cooldownTime;
+                energy -= consumption;
             }
         }
         else
         {
             cooldown -= 1;
-            energy -= consumption;
         }
     }
 }
