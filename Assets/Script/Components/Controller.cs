@@ -6,6 +6,9 @@ public class Controller : ComponentSS
 {
     [SerializeField]
     private float refill = 1;
+
+    [SerializeField] 
+    private StarShips ship;
     
     public float GetEnergy() { return energy; } 
     public float GetMaxEnergy() { return maxEnergy; } 
@@ -27,5 +30,20 @@ public class Controller : ComponentSS
         Renderer rend = GetComponent<Renderer>();
         float coeff = 3 * (energy / maxEnergy);
         rend.sharedMaterial.SetColor("_EmissionColor", new Vector4(0, 1.30041f, 1.498039f) * coeff);
+    }
+    
+    private int GetBatteriesCount()
+    {
+        int batteryCount = 0;
+
+        foreach (var obj in ship.GetComponents())
+        {
+            if (obj.GetComponent<Battery>() != null)
+            {
+                batteryCount++;
+            }
+        }
+
+        return batteryCount;
     }
 }

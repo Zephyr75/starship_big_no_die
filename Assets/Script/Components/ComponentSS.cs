@@ -46,21 +46,6 @@ public class ComponentSS : MonoBehaviour
         dir = newDir;
     }
 
-    public int GetBatteriesCount()
-    {
-        int batteryCount = 0;
-
-        foreach (var obj in objs.Values)
-        {
-            if (obj.GetComponent<Battery>() != null)
-            {
-                batteryCount++;
-            }
-        }
-
-        return batteryCount;
-    }
-
     public Dictionary<DirEnum, FixedJoint> Getjoints()
     {
         return joints;
