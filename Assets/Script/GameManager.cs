@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     private Material previewMaterial;
     
     [SerializeField]
+    private ResourcesManager resourcesManager;
+    
+    [SerializeField]
     private TMP_Text energyText;
     
     [SerializeField]
@@ -79,7 +82,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        energyText.text = ship.GetController().GetEnergy().ToString() + "/" + ship.GetController().GetMaxEnergy().ToString();
+        energyText.text = (Mathf.Round(ship.GetController().GetEnergy() * 10f) / 10f).ToString() + "/" + ship.GetController().GetMaxEnergy().ToString();
         
         postProcessingVolume.profile.TryGet<ChromaticAberration>(out aberration);
         aberration.intensity.value = ship.transform.GetChild(0).GetComponent<Rigidbody>().velocity.magnitude / 100;
@@ -120,6 +123,11 @@ public class GameManager : MonoBehaviour
                 Destroy(preview.GetComponent<Collider>());
                 oldHit = hit.transform;
                 oldNormal = hit.normal;
+                
+                StartCoroutine(resourcesManager.UpdateCristal(-20));
+                StartCoroutine(resourcesManager.UpdateElectronic(-20));
+                StartCoroutine(resourcesManager.UpdateMineral(-20));
+                StartCoroutine(resourcesManager.UpdateReinforced(-0));
             } else if (hit.collider.gameObject.layer != 30)
             {
                 Destroy(preview);
