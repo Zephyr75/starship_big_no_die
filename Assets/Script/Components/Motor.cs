@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Motor : ComponentSS
 {
-    private float speed = 3;
+    private float speed = 10;
     
     [SerializeField]
     private float consumption = 1;
@@ -19,15 +19,24 @@ public class Motor : ComponentSS
     // Update is called once per frame
     void Update()
     {
-        if (((Input.GetKey(KeyCode.W) && dir == DirEnum.Behind) ||
-             (Input.GetKey(KeyCode.S) && dir == DirEnum.Front) ||
-             (Input.GetKey(KeyCode.A) && dir == DirEnum.Right) ||
-             (Input.GetKey(KeyCode.D) && dir == DirEnum.Left) ||
-             (Input.GetKey(KeyCode.LeftShift) && dir == DirEnum.Down) ||
-             (Input.GetKey(KeyCode.LeftControl) && dir == DirEnum.Up)) && energy > 0)
+        if (!isEnemy)
         {
-            transform.GetComponent<Rigidbody>().AddForce(-transform.forward * speed, ForceMode.Force);
-            energy -= consumption * Time.deltaTime;
+            if (((Input.GetKey(KeyCode.W) && dir == DirEnum.Behind) ||
+                 (Input.GetKey(KeyCode.S) && dir == DirEnum.Front) ||
+                 (Input.GetKey(KeyCode.A) && dir == DirEnum.Right) ||
+                 (Input.GetKey(KeyCode.D) && dir == DirEnum.Left) ||
+                 (Input.GetKey(KeyCode.LeftShift) && dir == DirEnum.Down) ||
+                 (Input.GetKey(KeyCode.LeftControl) && dir == DirEnum.Up)) && energy > 0)
+            {
+                transform.GetComponent<Rigidbody>().AddForce(-transform.forward * speed, ForceMode.Force);
+                energy -= consumption * Time.deltaTime;
+            }
         }
+        else
+        {
+            // TODO go towards player
+            // transform.GetComponent<Rigidbody>().AddForce(-transform.forward * speed, ForceMode.Force);
+        }
+        
     }
 }

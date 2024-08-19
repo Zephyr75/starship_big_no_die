@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Controller : ComponentSS
 {
@@ -10,6 +11,8 @@ public class Controller : ComponentSS
     [SerializeField] 
     private StarShips ship;
     
+    [SerializeField] protected bool isEnemyController = false;
+    
     public float GetEnergy() { return energy; } 
     public float GetMaxEnergy() { return maxEnergy; } 
     
@@ -17,6 +20,11 @@ public class Controller : ComponentSS
     void Start()
     {
         energy = initialMaxEnergy;
+        isEnemy = isEnemyController;
+        if (isEnemyController)
+        {
+            ship.SetToEnemy();
+        }
     }
 
     // Update is called once per frame

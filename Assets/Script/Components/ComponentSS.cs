@@ -19,6 +19,8 @@ public class ComponentSS : MonoBehaviour
     
     protected bool isEnemy = false;
     protected float health = 10;
+
+    
     
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,11 @@ public class ComponentSS : MonoBehaviour
     void Update()
     {
         
+    }
+    
+    public void SetToEnemy()
+    {
+        isEnemy = true;
     }
 
     public void TakeDamage(float damage)
