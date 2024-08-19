@@ -6,6 +6,7 @@ using UnityEngine;
 public class Field : MonoBehaviour
 {
     private float health = 50;
+    private bool isEnemy;
 
     // Start is called before the first frame update
     void Start()
@@ -20,20 +21,28 @@ public class Field : MonoBehaviour
         
     }
 
+    public void SetToEnemy()
+    {
+        isEnemy = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<bulletScript>() != null)
         {
-            Destroy(other.gameObject);
-            
-            Renderer rend = GetComponent<Renderer>();
-            float coeff = (health / 100);
-            rend.materials[1].SetColor("_EmissionColor", new Vector4(0, 1.30041f, 1.498039f) * coeff);
-            
-            health -= 5;
-            if (health <= 0)
+            if (other.gameObject.GetComponent<bulletScript>().GetEnemyStatus() != isEnemy)
             {
-                Destroy(gameObject);
+                Destroy(other.gameObject);
+            
+                Renderer rend = GetComponent<Renderer>();
+                float coeff = (health / 100);
+                rend.materials[1].SetColor("_EmissionColor", new Vector4(0, 1.30041f, 1.498039f) * coeff);
+            
+                health -= 5;
+                if (health <= 0)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }

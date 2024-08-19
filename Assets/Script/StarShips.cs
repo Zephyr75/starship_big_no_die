@@ -21,6 +21,17 @@ public class StarShips : MonoBehaviour
     {
         
     }
+
+    public void SetToEnemy()
+    {
+        foreach (var obj in components)
+        {
+            if (obj.GetComponent<ComponentSS>() != null)
+            {
+                obj.GetComponent<ComponentSS>().SetToEnemy();
+            }
+        }
+    }
     
     public Controller GetController() { return controller; } 
 

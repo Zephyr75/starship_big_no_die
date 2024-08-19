@@ -5,9 +5,21 @@ using UnityEngine;
 
 public class bulletScript : MonoBehaviour
 {
-    public float bulletLifeTime = 5;
-    public int damage = 5; 
+    private float bulletLifeTime = 5;
+    private int damage = 5;
 
+    private bool isEnemy;
+    
+    public void SetToEnemy()
+    {
+        isEnemy = true;
+    }
+    
+    public bool GetEnemyStatus()
+    {
+        return isEnemy;
+    }
+    
     private void Awake()
     {
         Destroy(gameObject, bulletLifeTime);

@@ -29,29 +29,54 @@ public class FieldGen : ComponentSS
     {
         cooldown -= Time.deltaTime;
         
-        if (Input.GetKeyDown(KeyCode.F) && cooldown <= 0 && energy > 0)
+        if (!isEnemy)
         {
-            isActive = !isActive;
-            fieldInstance.SetActive(isActive);
-        }
         
-        if (cooldown > 0 || energy <= 0)
-        {
-            isActive = false;
-            fieldInstance.SetActive(false);
-        }
+            if (Input.GetKeyDown(KeyCode.F) && cooldown <= 0 && energy > 0)
+            {
+                isActive = !isActive;
+                fieldInstance.SetActive(isActive);
+            }
+        
+            if (cooldown > 0 || energy <= 0)
+            {
+                isActive = false;
+                fieldInstance.SetActive(false);
+            }
 
-        if (isActive)
-        {
-            energy -= consumption * Time.deltaTime;
-        }
+            if (isActive)
+            {
+                energy -= consumption * Time.deltaTime;
+            }
 
-        if (fieldInstance == null)
+            if (fieldInstance == null)
+            {
+                fieldInstance = Instantiate(fieldPrefab, transform.position, Quaternion.identity);
+                fieldInstance.transform.SetParent(transform);
+                fieldInstance.SetActive(false);
+                cooldown = 10;
+            }
+        }
+        else
         {
-            fieldInstance = Instantiate(fieldPrefab, transform.position, Quaternion.identity);
-            fieldInstance.transform.SetParent(transform);
-            fieldInstance.SetActive(false);
-            cooldown = 10;
+            if (fieldInstance != null)
+            {
+                fieldInstance.GetComponent<Field>().SetToEnemy();
+            }
+            
+            if (fieldInstance == null)
+            {
+                fieldInstance = Instantiate(fieldPrefab, transform.position, Quaternion.identity);
+                fieldInstance.transform.SetParent(transform);
+                fieldInstance.SetActive(false);
+                cooldown = 10;
+            }
+            
+            if (cooldown <= 0)
+            {
+                fieldInstance.SetActive(true);
+            }
+            
         }
     }
 }
