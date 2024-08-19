@@ -29,13 +29,13 @@ public class FieldGen : ComponentSS
     {
         cooldown -= Time.deltaTime;
         
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && cooldown <= 0 && energy > 0)
         {
             isActive = !isActive;
             fieldInstance.SetActive(isActive);
         }
         
-        if (cooldown >= 0 || energy <= 0)
+        if (cooldown > 0 || energy <= 0)
         {
             isActive = false;
             fieldInstance.SetActive(false);
@@ -44,6 +44,14 @@ public class FieldGen : ComponentSS
         if (isActive)
         {
             energy -= consumption * Time.deltaTime;
+        }
+
+        if (fieldInstance == null)
+        {
+            fieldInstance = Instantiate(fieldPrefab, transform.position, Quaternion.identity);
+            fieldInstance.transform.SetParent(transform);
+            fieldInstance.SetActive(false);
+            cooldown = 10;
         }
     }
 }

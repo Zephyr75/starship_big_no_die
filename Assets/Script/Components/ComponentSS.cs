@@ -32,6 +32,15 @@ public class ComponentSS : MonoBehaviour
         
     }
 
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void SetDir(DirEnum newDir)
     {
         dir = newDir;

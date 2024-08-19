@@ -6,7 +6,7 @@ using UnityEngine;
 public class bulletScript : MonoBehaviour
 {
     public float bulletLifeTime = 5;
-    public int damage = 10; 
+    public int damage = 5; 
 
     private void Awake()
     {
@@ -15,7 +15,10 @@ public class bulletScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        //other.TakeDommage.healthDwon(damage);
+        if (other.gameObject.GetComponent<ComponentSS>() != null)
+        {
+            other.gameObject.GetComponent<ComponentSS>().TakeDamage(damage);
+        }
         Destroy(gameObject);
     }
 

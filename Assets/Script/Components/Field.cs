@@ -5,17 +5,13 @@ using UnityEngine;
 
 public class Field : MonoBehaviour
 {
-    private float health = 100;
-
-    public void Reset()
-    {
-        health = 100;
-    }
+    private float health = 50;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Renderer rend = GetComponent<Renderer>();
+        rend.materials[1].SetColor("_EmissionColor", new Vector4(0, 1.30041f, 1.498039f) * 0.5f);
     }
 
     // Update is called once per frame
@@ -24,8 +20,21 @@ public class Field : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        // TODO
+        if (other.gameObject.GetComponent<bulletScript>() != null)
+        {
+            Destroy(other.gameObject);
+            
+            Renderer rend = GetComponent<Renderer>();
+            float coeff = (health / 100);
+            rend.materials[1].SetColor("_EmissionColor", new Vector4(0, 1.30041f, 1.498039f) * coeff);
+            
+            health -= 5;
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }
