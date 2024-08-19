@@ -14,6 +14,7 @@ public class ComponentSS : MonoBehaviour
     protected DirEnum dir = DirEnum.Front;
     
     protected static float energy;
+    protected const float initialMaxEnergy = 10;
     protected static float maxEnergy = 10;
     
     protected bool isEnemy = false;
@@ -34,6 +35,21 @@ public class ComponentSS : MonoBehaviour
     public void SetDir(DirEnum newDir)
     {
         dir = newDir;
+    }
+
+    public int GetBatteriesCount()
+    {
+        int batteryCount = 0;
+
+        foreach (var obj in objs.Values)
+        {
+            if (obj.GetComponent<Battery>() != null)
+            {
+                batteryCount++;
+            }
+        }
+
+        return batteryCount;
     }
 
     public Dictionary<DirEnum, FixedJoint> Getjoints()

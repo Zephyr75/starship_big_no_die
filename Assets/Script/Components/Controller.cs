@@ -13,23 +13,16 @@ public class Controller : ComponentSS
     // Start is called before the first frame update
     void Start()
     {
-        energy = maxEnergy;
+        energy = initialMaxEnergy;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
         energy += refill * Time.deltaTime;
-        // print(energy);
-        if (energy > maxEnergy)
-        {
-            energy = maxEnergy;
-        }
 
-        if (energy < 0)
-        {
-            energy = 0;
-        }
+        maxEnergy = initialMaxEnergy + GetBatteriesCount();
+        energy = Mathf.Clamp(energy, 0, maxEnergy);
         
         Renderer rend = GetComponent<Renderer>();
         float coeff = 3 * (energy / maxEnergy);
