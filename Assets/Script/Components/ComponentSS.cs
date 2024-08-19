@@ -11,10 +11,14 @@ public class ComponentSS : MonoBehaviour
 
     private Dictionary<DirEnum, GameObject> objs = new Dictionary<DirEnum, GameObject>();
     
-    private DirEnum dir = DirEnum.Front;
+    protected DirEnum dir = DirEnum.Front;
     
-    protected static float energy = 100;
-
+    protected static float energy;
+    protected static float maxEnergy = 10;
+    
+    protected bool isEnemy = false;
+    protected float health = 10;
+    
     // Start is called before the first frame update
     void Start()
     {

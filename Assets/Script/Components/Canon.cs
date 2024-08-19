@@ -1,9 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Script;
 using UnityEngine;
 
 public class Canon : ComponentSS
 {
+    [SerializeField]
+    private float consumption;
+    
+    [SerializeField]
+    private Transform bulletSpawnPoint;
+    
+    [SerializeField]
+    private GameObject metalBullet;
+
+    private float bulletSpeed = 30;
+
+    private int cooldownTime = 25;
+
+    private int cooldown = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -11,8 +27,21 @@ public class Canon : ComponentSS
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if (cooldown == 0 && energy > consumption)
+        {
+            if (Input.GetKey(KeyCode.Space) && isEnemy == false)
+            {
+                var bullet = Instantiate(metalBullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation * Quaternion.Euler(90, 0, 0));
+                bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;
+                cooldown = cooldownTime;
+            }
+        }
+        else
+        {
+            cooldown -= 1;
+            energy -= consumption;
+        }
     }
 }

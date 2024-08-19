@@ -35,6 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6482502762244561268}
+  - {fileID: 4049229039390968041}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3831622061136797193
@@ -148,6 +149,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isController: 0
+  consumption: 1
+  bulletSpawnPoint: {fileID: 4049229039390968041}
+  metalBullet: {fileID: 3478787546688892564, guid: 0f1489f0b155d2c4caf81a96c9486c94,
+    type: 3}
 --- !u!1 &3186826363844120613
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +215,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 993949b575b5a6e40bec3b8e83330605, type: 2}
-  - {fileID: 2100000, guid: 050099f3bd3d3b548aa46a4584fac323, type: 2}
+  - {fileID: 2100000, guid: 70c715f665aede34298858ce66402a76, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -232,3 +237,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7217001182991492639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4049229039390968041}
+  m_Layer: 29
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4049229039390968041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7217001182991492639}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3707346684049071554}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

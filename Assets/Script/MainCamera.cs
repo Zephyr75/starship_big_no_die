@@ -11,7 +11,8 @@ public class MainCamera : MonoBehaviour
     private float xSpeed = 500.0f;
     private float ySpeed = 500.0f;
 
-    private float sensitivity = 1f;
+    private float sensitivity = 2f;
+    private float steerSensitivity = 0.5f;
     
     private float yMinLimit = -80f;
     private float yMaxLimit = 80f;
@@ -22,7 +23,7 @@ public class MainCamera : MonoBehaviour
     private float deltaTime = 0.0f;
     private float lastTime = 0.0f;
     
-    private Vector3 ratio = new Vector3(0, 0.5f, -1);
+    private Vector3 ratio = new Vector3(0, 1f, -2.5f);
     private bool isEditing;
 
 
@@ -55,7 +56,7 @@ public class MainCamera : MonoBehaviour
             {
                 transform.parent = target;
                 transform.localPosition = ratio * distance;
-                transform.localEulerAngles = new Vector3(26.6f, 0, 0);
+                transform.localEulerAngles = new Vector3(10f, 0, 0);
             }
         }
         
@@ -69,6 +70,7 @@ public class MainCamera : MonoBehaviour
             y -= Input.GetAxis("Mouse Y") * ySpeed * deltaTime;
             y = ClampAngle(y, yMinLimit, yMaxLimit);
         }
+        
         if ((Input.GetAxis( "Mouse ScrollWheel" ) != 0 || Input.GetMouseButton(1)) && Time.timeScale == 0.0f)
         {
             Quaternion rotation = Quaternion.Euler(y, x, 0);
@@ -83,6 +85,8 @@ public class MainCamera : MonoBehaviour
         {
             transform.localPosition = ratio * distance;
             transform.localEulerAngles = new Vector3(26.6f, 0, 0);
+            transform.parent.GetComponent<Rigidbody>().AddTorque(steerSensitivity * Input.GetAxis("Mouse X") * transform.parent.up, ForceMode.Acceleration);
+            transform.parent.GetComponent<Rigidbody>().AddTorque(-steerSensitivity * Input.GetAxis("Mouse Y") * transform.parent.right, ForceMode.Acceleration);
         }
 
         

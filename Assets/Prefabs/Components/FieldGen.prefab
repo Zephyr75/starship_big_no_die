@@ -148,8 +148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isController: 0
-  fieldPrefab: {fileID: 4987867840064260250, guid: d6f3aa0866091a94aa8cab59bde4c072,
+  fieldPrefab: {fileID: 4585203936075417999, guid: d6f3aa0866091a94aa8cab59bde4c072,
     type: 3}
+  consumption: 2
 --- !u!1 &8851438830770980594
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,8 +212,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1921117910042366850, guid: 9d5c8d4f63bee8a42a616e638795570f, type: 3}
-  - {fileID: 405458606332198013, guid: 9d5c8d4f63bee8a42a616e638795570f, type: 3}
+  - {fileID: 2100000, guid: 993949b575b5a6e40bec3b8e83330605, type: 2}
+  - {fileID: 2100000, guid: 70c715f665aede34298858ce66402a76, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Solar : ComponentSS
 {
+    [SerializeField]
+    private float refill = 1;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +16,6 @@ public class Solar : ComponentSS
     // Update is called once per frame
     void Update()
     {
-        energy += Time.deltaTime;
+        energy += refill * Time.deltaTime;
     }
 }

@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using Script;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +22,14 @@ public class GameManager : MonoBehaviour
     
     [SerializeField]
     private Material previewMaterial;
+    
+    [SerializeField]
+    private TMP_Text energyText;
+    
+    [SerializeField]
+    private Volume postProcessingVolume;
+    
+    private ChromaticAberration aberration; 
 
     private GameObject preview;
     private Transform oldHit;
@@ -35,7 +47,7 @@ public class GameManager : MonoBehaviour
         motor.transform.position = ship.transform.position - ship.transform.forward * ship.transform.localScale.z * 2;
         motor.transform.eulerAngles += new Vector3(0, 180, 0);
         ComponentSS compMotor = motor.GetComponent<ComponentSS>();
-        compMotor.SetDir(DirEnum.Front);
+        compMotor.SetDir(DirEnum.Behind);
         if (compMotor != null)
         {
             ship.AddComponents(compMotor);
@@ -67,6 +79,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        energyText.text = ship.GetController().GetEnergy().ToString() + "/" + ship.GetController().GetMaxEnergy().ToString();
+        
+        postProcessingVolume.profile.TryGet<ChromaticAberration>(out aberration);
+        aberration.intensity.value = ship.transform.GetChild(0).GetComponent<Rigidbody>().velocity.magnitude / 100;
+        
         if (Time.timeScale > 0.0f)
         {
             if (preview)
@@ -87,7 +104,7 @@ public class GameManager : MonoBehaviour
                 Destroy(preview);
                 Transform hitTransform = hit.transform;
                 Vector3 ortho = hitTransform.forward;
-                if (Vector3.Dot(ortho, hit.normal) != 0)
+                if (Mathf.Abs(Vector3.Dot(Vector3.Normalize(ortho), Vector3.Normalize(hit.normal))) > 0.5)
                 {
                     ortho = hitTransform.transform.up;
                 }
@@ -139,23 +156,23 @@ public class GameManager : MonoBehaviour
     DirEnum getDirection(Vector3 forward)
     {
         Transform controller = ship.GetController().transform;
-        if (forward == controller.forward)
+        if (Vector3.Dot(Vector3.Normalize(forward), Vector3.Normalize(controller.forward)) > 0.5)
         {
             return DirEnum.Front;
         }
-        if (forward == -controller.forward)
+        if (Vector3.Dot(Vector3.Normalize(forward), Vector3.Normalize(-controller.forward)) > 0.5)
         {
             return DirEnum.Behind;
         }
-        if (forward == controller.up)
+        if (Vector3.Dot(Vector3.Normalize(forward), Vector3.Normalize(controller.up)) > 0.5)
         {
             return DirEnum.Up;
         }
-        if (forward == -controller.up)
+        if (Vector3.Dot(Vector3.Normalize(forward), Vector3.Normalize(-controller.up)) > 0.5)
         {
             return DirEnum.Down;
         }
-        if (forward == controller.right)
+        if (Vector3.Dot(Vector3.Normalize(forward), Vector3.Normalize(controller.right)) > 0.5)
         {
             return DirEnum.Right;
         }
