@@ -123,11 +123,6 @@ public class GameManager : MonoBehaviour
                 Destroy(preview.GetComponent<Collider>());
                 oldHit = hit.transform;
                 oldNormal = hit.normal;
-                
-                StartCoroutine(resourcesManager.UpdateCristal(-20));
-                StartCoroutine(resourcesManager.UpdateElectronic(-20));
-                StartCoroutine(resourcesManager.UpdateMineral(-20));
-                StartCoroutine(resourcesManager.UpdateReinforced(-0));
             } else if (hit.collider.gameObject.layer != 30)
             {
                 Destroy(preview);
@@ -158,6 +153,10 @@ public class GameManager : MonoBehaviour
             {
                 ship.AddComponents(comp);
             }
+            StartCoroutine(resourcesManager.UpdateCristal(-20));
+            StartCoroutine(resourcesManager.UpdateElectronic(-20));
+            StartCoroutine(resourcesManager.UpdateMineral(-20));
+            StartCoroutine(resourcesManager.UpdateReinforced(-0));
         }
     }
 
