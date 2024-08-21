@@ -49,7 +49,14 @@ public class Canon : ComponentSS
         }
         else
         {
-            if (cooldown <= 0)
+            GameObject player = GameObject.Find("player(Clone)");
+            float distance = 0;
+            if (player != null) {
+                Vector3 playerPosition = player.transform.position;
+                Vector3 direction = playerPosition - transform.position;
+                distance = direction.magnitude;
+            }
+            if (cooldown <= 0 && distance <= 50)
             {
                 var bullet = Instantiate(metalBullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation * Quaternion.Euler(90, 0, 0));
                 bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;

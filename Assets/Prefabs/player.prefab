@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6678281554210974004}
   - component: {fileID: 572541480968146007}
+  - component: {fileID: 5754005134729664227}
   m_Layer: 29
   m_Name: player
   m_TagString: Untagged
@@ -48,6 +49,21 @@ MonoBehaviour:
   components:
   - {fileID: 4145536417366233119}
   controller: {fileID: 4145536417366233119}
+--- !u!114 &5754005134729664227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3651903380032387762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455ff592fca481141ad44f9a75c31c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyToSpawn:
+  - {fileID: 738550816543779845, guid: 51d8b3ba2b1386c4bbd5ca2ceb09c05b, type: 3}
+  - {fileID: 2719277601231696162, guid: 7a800b9c78b2e3d498b8366dc5cd9279, type: 3}
 --- !u!1 &4896110046542791901
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,6 +423,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c25775b5ed8ed040919112a65901db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isController: 1
   refill: 1
-  ship: {fileID: 572541480968146007}
+  isEnemyController: 0

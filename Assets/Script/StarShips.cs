@@ -22,6 +22,10 @@ public class StarShips : MonoBehaviour
         
     }
 
+    public void RemoveComponent(ComponentSS component) {
+        components.Remove(component);
+    }
+
     public void SetToEnemy()
     {
         foreach (var obj in components)

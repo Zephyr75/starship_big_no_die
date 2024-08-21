@@ -34,8 +34,7 @@ public class Motor : ComponentSS
         }
         else
         {
-            // TODO go towards player
-            // transform.GetComponent<Rigidbody>().AddForce(-transform.forward * speed, ForceMode.Force);
+            // Enemy movement is implemented in the controller to be able to access the true forward direction
         }
         
     }

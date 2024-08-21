@@ -4,51 +4,45 @@ using UnityEngine;
 
 public class SpawnEnemies : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]
     public GameObject[] enemyToSpawn;
-    private Vector3 playerPosition;
-    public int enemyAlive = 0;
-    public int maxEnemy = 6;
 
-    public int facterScaleDueToShipScale = 1;
+    private Vector3 playerPosition;
+
+    private int scale = 1;
+
+    private float cooldown = 0;
     
+    // Start is called before the first frame update
     void Start()
     { 
         
-
-
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerPosition = GameObject.Find("player").transform.position;
-        transform.position = playerPosition;
-
-        if (enemyAlive < maxEnemy)
+        cooldown -= Time.deltaTime;
+    
+        if (cooldown < 0)
         {
-            int pm = Random.Range(0, 2);
-            if (pm == 0)
-            {
-                pm = -1;
-            }
-            
-            Vector3 enemyPosition = GetSpawnPosition() + new Vector3(20 * pm, 20 * pm, 20 * pm);
+            Vector3 enemyPosition = GetSpawnPosition();
             Instantiate(enemyToSpawn[Random.Range(0,1)], enemyPosition, Quaternion.identity);
 
-            enemyAlive = enemyAlive + 1;
+            cooldown = Random.Range(0, 10);
         }
-        
+    }
 
+    int GetRandomDirection() {
+        return 2 * Random.Range(0, 2) - 1;
     }
 
     Vector3 GetSpawnPosition()
     {
-        float xEnemy = Random.Range(-200*facterScaleDueToShipScale, 200*facterScaleDueToShipScale);
-        float yEnemy = Random.Range(-200*facterScaleDueToShipScale, 200*facterScaleDueToShipScale);
-        float zEnemy = Random.Range(-200*facterScaleDueToShipScale, 200*facterScaleDueToShipScale);
+
+        float xEnemy = GetRandomDirection() * Random.Range(20*scale, 200*scale);
+        float yEnemy = GetRandomDirection() * Random.Range(20*scale, 200*scale);
+        float zEnemy = GetRandomDirection() * Random.Range(20*scale, 200*scale);
 
         Vector3 enemyInitialPosition = new Vector3(xEnemy, yEnemy, zEnemy);
 

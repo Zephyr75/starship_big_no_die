@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class ComponentSS : MonoBehaviour
 {
-    [SerializeField] private bool isController;
-
     private Dictionary<DirEnum, FixedJoint> joints = new Dictionary<DirEnum, FixedJoint>();
 
     private Dictionary<DirEnum, GameObject> objs = new Dictionary<DirEnum, GameObject>();
@@ -76,5 +74,9 @@ public class ComponentSS : MonoBehaviour
                 objs.Add(direction, obj);
             }
         }
+    }
+    
+    void OnDestroy() {
+         transform.parent.GetComponent<StarShips>().RemoveComponent(this);   
     }
 }
