@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Motor : ComponentSS
 {
-    private float speed = 10;
+    private float speed = 50;
     
     [SerializeField]
     private float consumption = 1;
